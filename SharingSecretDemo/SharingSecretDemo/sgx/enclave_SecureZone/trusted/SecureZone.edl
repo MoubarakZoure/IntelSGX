@@ -1,0 +1,25 @@
+/* SecureZone.edl - Top EDL file. */
+
+enclave {
+    
+    /* 
+     * ocall_SecureZone_sample - invokes OCALL to display string buffer inside the enclave.
+     *  [in]: copy the string buffer to App outside.
+     *  [string]: specifies 'str' is a NULL terminated buffer.
+     */
+    untrusted {
+        void ocall_SecureZone_sample([in, string] const char *str);
+        int getRandom([in, out] int *x);
+        int send_secret([in] uint8_t *secret );
+        
+    };
+
+
+    trusted {
+    	    public int ecall_SecureZone_sample();
+    	    public int create_secret([in,out] uint8_t *theSecret);
+    	    public int process_secret([in,out] uint8_t *p_dst);
+    	    
+    	    
+    };
+};

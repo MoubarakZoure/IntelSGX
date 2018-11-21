@@ -1,0 +1,9 @@
+SecureZone.so
+{
+    global:
+        g_global_data_sim;
+        g_global_data;
+        SecureZone_entry;
+    local:
+        *;
+};
